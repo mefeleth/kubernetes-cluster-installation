@@ -1,6 +1,5 @@
 # Kubernetes cluster installation using 3-node VirtualBox VMs and Kubeadm
-### This guide serves as an example step-by-step setup of Kubernetes cluster that consists of 3 nodes (1 master + 2 workers) with the use of VirtualBox virtual machines and
-Kubeadm installation utility.
+### This guide serves as an example step-by-step setup of Kubernetes cluster that consists of 3 nodes (1 master + 2 workers) with the use of VirtualBox virtual machines and Kubeadm installation utility.
 
 ##### 1. Create a Host-only network in VirtualBox
 ###### a. `File > Host Network Manager > Create`
@@ -12,10 +11,10 @@ Wait until the creation of new network adapter and click `Properties`
 In my case I'm gonna name it kube-master and it's gonna be a Lubuntu LXDE 18.04 machine with 2 network interfaces - one for internet access and one for kubernetes network.
 ###### a. Assign 2 CPUs for the node and 4GB RAM, 10GB of disk space will be sufficient
 ###### b. Set the first network adapter to be a NAT with Desktop type card and forward port 22 (guest) to 2711 (host). 
-* Keep a note in your head * that you will have to change the port on host in additional nodes to 2711+i, where i is represented by the consecutive worker nodes.
+**Keep a note in your head** that you will have to change the port on host in additional nodes to 2711+i, where i is represented by the consecutive worker nodes.
 ###### c. Set the second network adapter to be a Host-only that we created earlier.
 ###### d. Launch the machine and install Lubuntu.
-* Note * If you will encounter an error while starting a machine, saying that there is no such Ethernet adapter, on your Windows PC go to `Control Panel > Network and Sharing Center >
+**Note** If you will encounter an error while starting a machine, saying that there is no such Ethernet adapter, on your Windows PC go to `Control Panel > Network and Sharing Center >
 Change Network Interface Card Settings > Right-click on the Ethernet assigned to VBox Host-only > Disable and Enable again`
 
 ###### 3. Install and configure necessary utilities
@@ -32,7 +31,7 @@ sudo ./VBoxLinuxAdditions.run
 reboot
 ```
 
-##### 4. Set static IP address (* Keep a note in your head * that you will have to change the addresses section to appropriate IP addresses in workers separately later):
+##### 4. Set static IP address (**Keep a note in your head** that you will have to change the addresses section to appropriate IP addresses in workers separately later):
 ```
 sudo vim /etc/netplan/01-network-manager-all.yaml
 ```
@@ -53,7 +52,7 @@ sudo netplan apply
 reboot
 ```
 
-* Note * If you're using *buntu images below 17.04 version, this will be the correct way of setting the static IP addresses instead:
+**Note** If you're using *buntu images below 17.04 version, this will be the correct way of setting the static IP addresses instead:
 ```
 vim /etc/network/interfaces
 ```
